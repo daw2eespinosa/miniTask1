@@ -1,0 +1,21 @@
+.ads{
+    background-color: antiquewhite;
+    height: 8vh;
+}
+.corners{
+    border-radius: 8vh;
+    padding: 2vh;
+    margin: 2vh;
+}
+.body-background{
+    background-image: url("../img/background.png");
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #d2c8ba;
+
+}
+.opacity{
+    /*background-color: transparent;*/
+    opacity: 0.6; !important;
+}
