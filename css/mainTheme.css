@@ -19,3 +19,6 @@
     /*background-color: transparent;*/
     opacity: 0.6; !important;
 }
+.valid:valid{border-color: #4cae4c}
+.valid:invalid{border-color: #ff0000}
+.valid:required{border-color: transparent}

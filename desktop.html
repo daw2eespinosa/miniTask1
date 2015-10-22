@@ -16,6 +16,7 @@
 			<li><a href="">Directory 1</a></li>
 			<li><a href="">Directory 2</a></li>
 			<li><a href="login.html">Log out</a></li>
+			<li><a href="tasks.html">tasks</a></li>
 		</ul>
 	</nav>
 	<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -29,6 +30,25 @@
 				<input type="checkbox" class="checkbox">enabled?</input>
 				<input type="radio" class="radio">optional</input>
 				<input type="radio" class="radio active">optional</input>
+				<form method="post" action="" class="form-horizontal">
+					<fieldset>
+						<legend class="">Form task1</legend>
+						<label for="fullname">Full name</label>
+						<input type="text" name="fullName" id="fullname" placeholder="Full name" autofocus="autofocus" maxlength="50" required="required"/>
+						<label for="male">Male</label>
+						<input type="radio" class="radio" name="gender" id="male" value="male"/>
+						<label for="female">Female</label>
+						<input type="radio" class="radio" name="gender" id="female" value="female"/>
+						<label for="newsletter">Subscribe to newsletter?</label>
+						<input type="checkbox" class="checkbox" name="newsletter" id="newsletter"/>
+						<textarea class="opacity" rows="5" cols="30" name="notes" maxlength="500"></textarea>
+						<label for="birthday">Birthday</label>
+						<input type="date" class="" name="birthday" id="birthday"/>
+						<label for="salary">Salary</label>
+						<input type="number" class="" name="salary" id="salary" step="500" min="20000" max="200000"/>
+						<input type="submit" class="btn"/>
+					</fieldset>
+				</form>
 			</div>
 		</main>
 		<aside class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
