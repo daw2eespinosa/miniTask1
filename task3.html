@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mainTheme.css"/>
+    <title>Desktop</title>
+</head>
+<body class="container body-background">
+<header class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1>Enterprise</h1>
+</header>
+<nav class="opacity row col-xs-12 col-sm-4 col-md-3 col-lg-2 navbar navbar-default">
+    <ul class="nav">
+        <li><a class="" href="">Home</a></li>
+        <li><a href="">Directory 1</a></li>
+        <li><a href="">Directory 2</a></li>
+        <li><a href="login.html">Log out</a></li>
+    </ul>
+</nav>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <main class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+        <div class="row col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            <form method="post" action="" id="form1" class="form-horizontal col-xs-12">
+                <fieldset>
+                    <legend class="">Form task1</legend>
+                    <div class="form-group">
+                        <label for="fullName" class="col-lg-3 col-sm-4 col-xs-12">Full name</label>
+                        <input type="text" name="fullName" class="col-lg-9 col-sm-8 col-xs-12 valid opacity" id="fullName"
+                               placeholder="Full name" autofocus="autofocus" data-listener="blur"
+                               data-required="required" data-pattern="^[a-zA-Z \\D]+" data-min="7" data-max="50"/>
+
+                        <label for="male" class="col-lg-3 col-sm-4 col-xs-6">Male</label>
+                        <input type="radio" class="radio valid opacity" name="gender" id="male" value="male" required data-listener="blur"/>
+                        <label for="female" class="col-lg-3 col-sm-4 col-xs-6">Female</label>
+                        <input type="radio" class="radio valid opacity" name="gender" id="female" value="female" data-listener="blur" />
+
+                        <label for="newsletter" class="col-lg-3 col-sm-4 col-xs-6">Subscribe to newsletter?</label>
+                        <input type="checkbox" class="checkbox valid opacity" name="newsletter" id="newsletter"
+                               data-listener="blur"/>
+
+                        <textarea class="opacity valid col-xs-12" id="notes" rows="5" cols="30" name="notes"
+                                  maxlength="500" data-listener="blur"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday" class="col-lg-3 col-sm-4 col-xs-12">Birthday</label>
+                        <input type="date" class="valid col-lg-9 col-sm-8 col-xs-12 opacity" name="birthday" id="birthday"
+                               data-listener="blur"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary" class="col-lg-3 col-sm-4 col-xs-12">Salary</label>
+                        <input type="number" class="valid col-lg-9 col-sm-8 col-xs-12 opacity" name="salary" id="salary"
+                               step="500" min="20000" max="200000" data-listener="blur"/>
+                    </div>
+                    <input type="submit"
+                           class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 btn btn-success btn-xs"/>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+    <aside class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+        <h4>boxes of information</h4>
+
+        <div class="ads corners opacity">box 1</div>
+        <div class="ads corners opacity">box 2</div>
+        <div class="ads corners opacity">box 3</div>
+    </aside>
+</div>
+<footer class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 modal-footer">
+    <h4>signature of site</h4>
+    <ul class="col-xs-12 col-sm-4">
+        <li class="">item 1</li>
+        <li class="">item 1</li>
+        <li class="">item 1</li>
+    </ul>
+    <ol class="col-xs-12 col-sm-4">
+        <li class="">item 2</li>
+        <li class="">item 2</li>
+        <li class="">item 2</li>
+    </ol>
+    <ul class="col-xs-12 col-sm-4">
+        <li class="">item 3</li>
+        <li class="">item 3</li>
+        <li class="">item 3</li>
+    </ul>
+</footer>
+<script>
+    addEventListener(getElements("form1"));
+//    getElements("form1");
+    function getElements(form){
+        var valid = "checkbox,color,date,datetime,datetime-local,email,file,month,number,password,radio,range,search,submit,text,textarea,time,url,week";
+        var elements = document.getElementById(form).elements;
+        var elementsValid = new Array();
+        for (var i = 0;  i < elements.length; i++) {
+            if(valid.indexOf(elements[i].type) != -1){
+                elementsValid.push(elements[i]);
+            }
+        }
+//        console.log(elementsValid);
+        return elementsValid;
+    }
+    function addEventListener(elements){
+        for (var i = 0; i < elements.length; i++){
+            if(getEvent(elements[i]) != null & getEvent(elements[i]) != "submit"){
+                elements[i].addEventListener(getEvent(elements[i]), validation, true);
+            }
+            else if(getEvent(elements[i]) === "submit"){
+                elements[i].addEventListener(getEvent(elements[i]), validation, true);
+            }
+        }
+    }
+    function getEvent(element){
+         return element.getAttribute("data-listener");
+    }
+    function validation(e) {
+        console.log(e);
+        //eval("validation"+this.type+"(this)");
+        switch (this.type) {
+            case "checkbox" : validationCheckBox(this); break;
+            case "color" : validationColor(this); break;
+            case "date" : validationDate(); break;
+            case "datetime" : validationDateTime(); break;
+            case "datetime-local" : validationDateTimeLocal(); break;
+            case "email" : validationEmail(); break;
+            case "file" : validationFile(); break;
+            case "month" : validationMonth(); break;
+            case "number" : validationNumber(); break;
+            case "password" : validationPassword(); break;
+            case "radio" : validationRadio(this); break;
+            case "range" : validationRange(); break;
+            case "search" : validationSearch(); break;
+            case "text" : validationText(this); break;
+            case "textarea" : validationTextArea(); break;
+            case "time" : validationUrl(); break;
+            case "url" : validationUrl(); break;
+            case "week" : validationWeek(); break;
+            default : wrongFunction();
+        }
+    }
+    function validationCheckBox(id){}
+    function validationColor(){}
+    function validationDate(){}
+    function validationDateTime(){}
+    function validationDateTimeLocal(){}
+    function validationEmail(){}
+    function validationFile(){}
+    function validationMonth(){}
+    function validationNumber(){}
+    function validationPassword(){}
+    function validationRadio(name){console.log(name);
+        console.log(name.name);
+        if(!name.name.checked){
+            fieldRequired(name);
+        }
+    }
+    function validationRange(){}
+    function validationSearch(){}
+    function validationText(id){
+        var att = getAttributesToValidate(id);
+        console.log(att.length);
+        console.log(att);
+        for(var i = 0; i < att.length; i++){
+            console.log(getAttributesToValidate(id)[i]);
+        }
+        if(!pattern(id.value, id.getAttribute("data-pattern"))){
+            console.log(id.validity);
+            id.setCustomValidity("Invalid name");
+        }
+        else {
+            id.validity.valid = true;
+            console.log(id.validity);
+
+        }
+    }
+    function validationTextArea(){}
+    function validationTime(){}
+    function validationUrl(){}
+    function validationWeek(){}
+    function wrongFunction(){
+        console.log("this is a mess");
+    }
+    function fieldRequired(id){id.setCustomValidity("Wrong!");}
+    function getAttributesToValidate(element){
+        var attributesList = "data-checked,data-max,data-maxlength,data-min,data-pattern,data-required";
+        var attributesToValidate = [];
+        for(var i = 0; i < element.attributes.length; i++){
+            if(attributesList.indexOf(element.attributes[i].name) != -1){
+                attributesToValidate.push(element.attributes[i]);
+            }
+        }
+        return attributesToValidate;
+    }
+    function checked(){}
+    function max(){}
+    function maxlength(){}
+    function min(){}
+    function pattern(value, regex){
+        console.log(regex);
+        var expression = new RegExp(regex, "g");
+        return expression.test(value);
+    }
+    function required(){}
+</script>
+</body>
+</html>

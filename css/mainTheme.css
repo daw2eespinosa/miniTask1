@@ -22,3 +22,9 @@
 .valid:valid{border-color: #4cae4c}
 .valid:invalid{border-color: #ff0000}
 .valid:required{border-color: transparent}
+.box {
+    height:10vw;
+    width:10vw;
+    display:inline-block;
+    border: 2px solid black;
+}

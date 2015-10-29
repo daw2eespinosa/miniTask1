@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mainTheme.css"/>
+    <title>Desktop</title>
+    <script>
+        var element = null;
+        var colorBackup = null;
+
+        function dragThis(evt) {
+            console.log(evt);
+            evt.dataTransfer.setData("Color", evt.target.style.background);
+            evt.target.style.opacity = 0.3;
+            element = evt.currentTarget;
+        }
+        function setBorderSize(evt, size) {
+            evt.currentTarget.style.border = size + " solid black";
+        }
+        function allowDrop(evt) {
+            evt.preventDefault();
+        }
+        function drop(evt) {
+            console.log(evt);
+            var color = evt.dataTransfer.getData("Color");
+            colorBackup = evt.currentTarget.style.background;
+            evt.currentTarget.style.background = color;
+            setBorderSize(evt, '2px');
+            element.style.background = colorBackup;
+            element.style.opacity = 1.0;
+        }
+        function channel() {
+            return Math.floor((Math.random() * 255) + 1);
+        }
+        function color() {
+            var r = channel();
+            var g = channel();
+            var b = channel();
+            return "rgb(" + r + "," + g + "," + b + ")";
+        }
+        function colorIt(){
+            listOfBoxes = document.getElementsByClassName("box");
+            for(var i = 0; i < listOfBoxes.length; i++){
+                listOfBoxes[i].style.background = color();
+            }
+        }
+       /** ondragstart dragThis()
+        ondragenter setBorderSize(4)
+        ondragleave setBorderSize(2)
+        ondragover allowDrop()
+        ondrop drop()*/
+
+       </script>
+</head>
+<body class="container body-background" onload="colorIt()">
+<header class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1>Enterprise</h1>
+</header>
+<nav class="opacity row col-xs-12 col-sm-4 col-md-3 col-lg-2 navbar navbar-default">
+    <ul class="nav">
+        <li><a class="" href="">Home</a></li>
+        <li><a href="">Directory 1</a></li>
+        <li><a href="">Directory 2</a></li>
+        <li><a href="login.html">Log out</a></li>
+    </ul>
+</nav>
+<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <main class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+        <div class="box" draggable="true" ondragstart="dragThis(event)" ondragenter="setBorderSize(event, '4px')" ondragleave="setBorderSize(event, '2px')" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+        <div class="box" draggable="true" ondragstart="dragThis(event)" ondragenter="setBorderSize(event, '4px')" ondragleave="setBorderSize(event, '2px')" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+        <div class="box" draggable="true" ondragstart="dragThis(event)" ondragenter="setBorderSize(event, '4px')" ondragleave="setBorderSize(event, '2px')" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+        <p>        </p>
+        <div class="box" draggable="true" ondragstart="dragThis(event)" ondragenter="setBorderSize(event, '4px')" ondragleave="setBorderSize(event, '2px')" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+        <div class="box" draggable="true" ondragstart="dragThis(event)" ondragenter="setBorderSize(event, '4px')" ondragleave="setBorderSize(event, '2px')" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+        <div class="box" draggable="true" ondragstart="dragThis(event)" ondragenter="setBorderSize(event, '4px')" ondragleave="setBorderSize(event, '2px')" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    </main>
+    <aside class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+        <h4>boxes of information</h4>
+
+        <div class="ads corners opacity">box 1</div>
+        <div class="ads corners opacity">box 2</div>
+        <div class="ads corners opacity">box 3</div>
+    </aside>
+</div>
+<footer class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 modal-footer">
+    <h4>signature of site</h4>
+    <ul class="col-xs-12 col-sm-4">
+        <li class="">item 1</li>
+        <li class="">item 1</li>
+        <li class="">item 1</li>
+    </ul>
+    <ol class="col-xs-12 col-sm-4">
+        <li class="">item 2</li>
+        <li class="">item 2</li>
+        <li class="">item 2</li>
+    </ol>
+    <ul class="col-xs-12 col-sm-4">
+        <li class="">item 3</li>
+        <li class="">item 3</li>
+        <li class="">item 3</li>
+    </ul>
+</footer>
+</body>
+</html>
